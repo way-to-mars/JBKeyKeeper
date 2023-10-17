@@ -2,6 +2,8 @@
 using System.Windows;
 using System.Text.Json;
 using System;
+using System.Text.Encodings.Web;
+using System.Text.Unicode;
 
 namespace JBKeyKeeper
 {
@@ -9,14 +11,15 @@ namespace JBKeyKeeper
     {
         public App() { Startup += new StartupEventHandler(OnAppStart); }
 
-        void OnAppStart(object sender, StartupEventArgs e) {
+        void OnAppStart(object sender, StartupEventArgs e)
+        {
 
             JBKKContainer jbbk = new JBKKContainer
             {
-                Name = "Thomas",
-                Format = "0",
-                History = new List<JBBKItem> { 
-                    new JBBKItem{ 
+                Format = JBKKContainer.TAG,
+                Name = "0",
+                History = new List<JBBKItem> {
+                    new JBBKItem{
                         Date = "02.02.2023",
                         Name = "Bank account",
                         Fields = new List<JBBKPair> {
@@ -37,9 +40,20 @@ namespace JBKeyKeeper
                 }
             };
 
-            var jbbkSerialized = JsonSerializer.Serialize(jbbk);
 
-            Console.WriteLine("\n" + jbbkSerialized.ToString() + "\n");   
+            var jbbkSerialized = JsonSerializer.Serialize(jbbk,
+                new JsonSerializerOptions
+                {
+                    WriteIndented = true,
+                    Encoder = JavaScriptEncoder.Create(UnicodeRanges.BasicLatin, UnicodeRanges.Cyrillic),
+                });
+
+            Console.WriteLine("\n" + jbbkSerialized.ToString() + "\n");
+
+            JBKKContainer weatherForecast = JsonSerializer.Deserialize<JBKKContainer>(jbbkSerialized);
+
+            string obfuscate = StringObfuscate.obfuscate("Hi there");
+            Console.WriteLine(obfuscate + " - " + StringObfuscate.unobfuscate(obfuscate));
 
             this.Shutdown();
         }
