@@ -1,37 +1,90 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
 
 namespace JBKeyKeeper
 {
-    internal class StringObfuscate
+    public static class StringExtensions
     {
-        private static String key = "Zx" + Math.Log(2) / 3;
-
-        public static String obfuscate(String s)
+        private const int key = 17 * 31;
+        public static string FormatCringe(this string inputString, bool undo = false)
         {
-            char[] result = new char[s.Length];
-            for (int i = 0; i < s.Length; i++)
+            if (undo)
             {
-                result[i] = (char)(s.ElementAt(i) + key.ElementAt(i % key.Length));
+                string knownLengthString = inputString.UnRenameHex();
+                int unkey = key * (knownLengthString.Length / 4);
+                return knownLengthString.DeShuffle(unkey).FromUTFCodeString();
             }
 
-            return new String(result);
+            return inputString.ToUTFCodeString().Shuffle(key * inputString.Length).RenameHex();
         }
 
-        public static String unobfuscate(String s)
+        private static int[] GetShuffleExchanges(int size, int key)
         {
-            char[] result = new char[s.Length];
-            for (int i = 0; i < s.Length; i++)
+            int[] exchanges = new int[size - 1];
+            var rand = new Random(key);
+            for (int i = size - 1; i > 0; i--)
             {
-                result[i] = (char)(s.ElementAt(i) - key.ElementAt(i % key.Length));
+                int n = rand.Next(i + 1);
+                exchanges[size - 1 - i] = n;
             }
-
-            return new String(result);
+            return exchanges;
         }
 
+        private static string Shuffle(this string toShuffle, int key)
+        {
+            int size = toShuffle.Length;
+            char[] chars = toShuffle.ToArray();
+            var exchanges = GetShuffleExchanges(size, key);
+            for (int i = size - 1; i > 0; i--)
+            {
+                int n = exchanges[size - 1 - i];
+                char tmp = chars[i];
+                chars[i] = chars[n];
+                chars[n] = tmp;
+            }
+            return new string(chars);
+        }
+
+        private static string DeShuffle(this string shuffled, int key)
+        {
+            int size = shuffled.Length;
+            char[] chars = shuffled.ToArray();
+            var exchanges = GetShuffleExchanges(size, key);
+            for (int i = 1; i < size; i++)
+            {
+                int n = exchanges[size - i - 1];
+                char tmp = chars[i];
+                chars[i] = chars[n];
+                chars[n] = tmp;
+            }
+            return new string(chars);
+        }
+
+        private static string ToUTFCodeString(this string str)
+        {
+            List<string> output = new List<string>();
+            for (var i = 0; i < str.Length; i++)
+                output.Add(string.Format("{0:X4}", (ushort)str[i]));
+            return string.Concat(output);
+        }
+
+        private static string FromUTFCodeString(this string str)
+        {
+            List<char> output = new List<char>();
+            for (var i = 0; i < str.Length; i += 4)
+                output.Add((char)Convert.ToUInt16(str.Substring(i, 4), 16));
+            return string.Concat(output);
+        }
+
+        private static string RenameHex(this string hexString)
+        {
+            return hexString.Replace("04", "Q").Replace("44", "W").Replace("000", "X").Replace("00", "Y").Replace("0", "Z");
+        }
+
+        private static string UnRenameHex(this string hexString)
+        {
+            return hexString.Replace("Z", "0").Replace("Y", "00").Replace("X", "000").Replace("W", "44").Replace("Q", "04");
+        }
     }
 }

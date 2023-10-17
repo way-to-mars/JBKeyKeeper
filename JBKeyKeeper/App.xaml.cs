@@ -5,6 +5,7 @@ using System;
 using System.Text.Encodings.Web;
 using System.Text.Unicode;
 
+
 namespace JBKeyKeeper
 {
     public partial class App : Application
@@ -17,7 +18,7 @@ namespace JBKeyKeeper
             JBKKContainer jbbk = new JBKKContainer
             {
                 Format = JBKKContainer.TAG,
-                Name = "0",
+                Name = "Thomas passwords",
                 History = new List<JBBKItem> {
                     new JBBKItem{
                         Date = "02.02.2023",
@@ -40,22 +41,20 @@ namespace JBKeyKeeper
                 }
             };
 
-
-            var jbbkSerialized = JsonSerializer.Serialize(jbbk,
+            var jbbkSerialized = JsonSerializer.Serialize(jbbk.Seal(),
                 new JsonSerializerOptions
                 {
-                    WriteIndented = true,
+                    WriteIndented = false,
                     Encoder = JavaScriptEncoder.Create(UnicodeRanges.BasicLatin, UnicodeRanges.Cyrillic),
                 });
 
             Console.WriteLine("\n" + jbbkSerialized.ToString() + "\n");
 
-            JBKKContainer weatherForecast = JsonSerializer.Deserialize<JBKKContainer>(jbbkSerialized);
-
-            string obfuscate = StringObfuscate.obfuscate("Hi there");
-            Console.WriteLine(obfuscate + " - " + StringObfuscate.unobfuscate(obfuscate));
+            JBKKContainerSealed jbkkFromfile = JsonSerializer.Deserialize<JBKKContainerSealed>(jbbkSerialized);
+            JBKKContainer unsealed = jbkkFromfile.Unseal();
 
             this.Shutdown();
         }
+
     }
 }
