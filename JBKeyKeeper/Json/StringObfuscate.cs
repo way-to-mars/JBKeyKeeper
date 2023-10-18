@@ -7,7 +7,7 @@ namespace JBKeyKeeper
     public static class StringExtensions
     {
         private const int key = 17 * 31;
-        public static string FormatCringe(this string inputString, bool undo = false)
+        public static string FormatSealed(this string inputString, bool undo = false)
         {
             if (undo)
             {

@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Windows;
-using System.Text.Json;
-using System;
+﻿using System;
+using System.Collections.Generic;
 using System.Text.Encodings.Web;
+using System.Text.Json;
 using System.Text.Unicode;
+using System.Windows;
 
 
 namespace JBKeyKeeper
@@ -17,7 +17,6 @@ namespace JBKeyKeeper
 
             JBKKContainer jbbk = new JBKKContainer
             {
-                Format = JBKKContainer.TAG,
                 Name = "Thomas passwords",
                 History = new List<JBBKItem> {
                     new JBBKItem{
@@ -44,7 +43,7 @@ namespace JBKeyKeeper
             var jbbkSerialized = JsonSerializer.Serialize(jbbk.Seal(),
                 new JsonSerializerOptions
                 {
-                    WriteIndented = false,
+                    WriteIndented = true,
                     Encoder = JavaScriptEncoder.Create(UnicodeRanges.BasicLatin, UnicodeRanges.Cyrillic),
                 });
 
@@ -53,7 +52,7 @@ namespace JBKeyKeeper
             JBKKContainerSealed jbkkFromfile = JsonSerializer.Deserialize<JBKKContainerSealed>(jbbkSerialized);
             JBKKContainer unsealed = jbkkFromfile.Unseal();
 
-            this.Shutdown();
+          //  this.Shutdown();
         }
 
     }
