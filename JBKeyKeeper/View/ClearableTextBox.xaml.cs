@@ -4,9 +4,6 @@ using System.Windows.Controls;
 
 namespace JBKeyKeeper.View
 {
-    /// <summary>
-    /// Логика взаимодействия для ClearableTextBox.xaml
-    /// </summary>
     public partial class ClearableTextBox : UserControl, INotifyPropertyChanged
     {
 
@@ -19,23 +16,23 @@ namespace JBKeyKeeper.View
             get { return placeholder; }
             set {
                 placeholder = value;
-                tbPlaceholder.Text = placeholder;
+             //   tbPlaceholder.Text = placeholder;
+                PropertyChanged.Invoke(this, new PropertyChangedEventArgs("Placeholder"));
             }
         }
-
 
         public ClearableTextBox()
         {
             InitializeComponent();
         }
 
-        private void btnClear_Click(object sender, RoutedEventArgs e)
+        private void BtnClear_Click(object sender, RoutedEventArgs e)
         {
             txtInput.Clear();
             txtInput.Focus();
         }
 
-        private void txtInput_TextChanged(object sender, TextChangedEventArgs e)
+        private void TxtInput_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (string.IsNullOrEmpty(txtInput.Text))
                 tbPlaceholder.Visibility = Visibility.Visible;

@@ -1,12 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using JBKeyKeeper.Json;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace JBKeyKeeper
 {
     internal class JBKKContainerSealed
     {
-        public const string TAG = "JsonBasedKeyKeeper";
-        public string Format { get; set; }
+        public string Format { get => JBKKDefs.FormatTAG; set { } }
+        public JbbkType Type { get => JbbkType.SEALED; set { } }
         public string Name { get; set; }
         public IList<JBBKItemSealed> History { get; set; }
     }
@@ -31,15 +32,15 @@ namespace JBKeyKeeper
         private static JBBKPair Unseal(this JBBKPairSealed sealedPair) =>
             new JBBKPair
             {
-                Name = sealedPair.Name.FormatCringe(undo: FCFlag),
-                Value = sealedPair.Value.FormatCringe(undo: FCFlag)
+                Name = sealedPair.Name.FormatSealed(undo: FCFlag),
+                Value = sealedPair.Value.FormatSealed(undo: FCFlag)
             };
 
         private static JBBKItem Unseal(this JBBKItemSealed sealedItem) =>
             new JBBKItem
             {
-                Date = sealedItem.Date.FormatCringe(undo: FCFlag),
-                Name = sealedItem.Name.FormatCringe(undo: FCFlag),
+                Date = sealedItem.Date.FormatSealed(undo: FCFlag),
+                Name = sealedItem.Name.FormatSealed(undo: FCFlag),
                 Fields = sealedItem.Fields.Select(pair => pair.Unseal()).ToList()
             };
 
@@ -47,7 +48,7 @@ namespace JBKeyKeeper
             new JBKKContainer
             {
                 Format = sealedContainer.Format,
-                Name = sealedContainer.Name.FormatCringe(undo: FCFlag),
+                Name = sealedContainer.Name.FormatSealed(undo: FCFlag),
                 History = sealedContainer.History.Select(item => item.Unseal()).ToList()
             };
     }

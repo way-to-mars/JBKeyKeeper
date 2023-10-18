@@ -23,16 +23,6 @@ namespace JBKeyKeeper
         public MainWindow()
         {
             InitializeComponent();
-            lvEntries.Items.Add("A1");
-            lvEntries.Items.Add("A2");
-            lvEntries.Items.Add("A3");
-            lvEntries.Items.Add("A4");
-            lvEntries.Items.Add("A5");
-        }
-
-        private void btnAdd_Click(object sender, RoutedEventArgs e)
-        {
-            lvEntries.Items.Add(txtEntry.Text);
         }
     }
 }

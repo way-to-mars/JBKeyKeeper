@@ -17,7 +17,6 @@ namespace JBKeyKeeper
 
             JBKKContainer jbbk = new JBKKContainer
             {
-                Format = JBKKContainer.TAG,
                 Name = "Thomas passwords",
                 History = new List<JBBKItem> {
                     new JBBKItem{

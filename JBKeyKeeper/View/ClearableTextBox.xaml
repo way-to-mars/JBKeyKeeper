@@ -8,11 +8,11 @@
              d:DesignHeight="40" d:DesignWidth="250">
     <Grid Background="White">
         <TextBox x:Name="txtInput" VerticalContentAlignment="Center" FontSize="16" FontWeight="Light"
-                 Background="Transparent" TextChanged="txtInput_TextChanged" Padding="0,0,30,0"/>
-        <TextBlock x:Name="tbPlaceholder" VerticalAlignment="Center" Text="{Binding Placeholder}"
+                 Background="Transparent" TextChanged="TxtInput_TextChanged" Padding="0,0,30,0"/>
+        <TextBlock x:Name="tbPlaceholder" VerticalAlignment="Center" Text="{Binding Placeholder, UpdateSourceTrigger=PropertyChanged}"
                    FontSize="16" FontWeight="Light" Foreground="DarkGray" Margin="5,0,0,0"
                    Panel.ZIndex="-1"/>
         <Button x:Name="btnClear" Width="30" HorizontalAlignment="Right" Content="X"
-                Background="Transparent" Foreground="LightGray" BorderThickness="0" Click="btnClear_Click"/>
+                Background="Transparent" Foreground="LightGray" BorderThickness="0" Click="BtnClear_Click"/>
     </Grid>
 </UserControl>

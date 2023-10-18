@@ -1,5 +1,4 @@
-﻿
-namespace JBKeyKeeper.Json
+﻿namespace JBKeyKeeper.Json
 {
     enum JbbkType { OPEN, SEALED, CRYPTED }
     
