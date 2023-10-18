@@ -31,7 +31,7 @@ namespace JBKeyKeeper
                     },
                     new JBBKItem{
                         Date = "12.09.2023",
-                        Name = "Bank account",
+                        Name = "Bank account2",
                         Fields = new List<JBBKPair> {
                             new JBBKPair{ Name = "login", Value = "Thomas"},
                             new JBBKPair{ Name = "password", Value = "01231230"},
@@ -44,7 +44,7 @@ namespace JBKeyKeeper
             var jbbkSerialized = JsonSerializer.Serialize(jbbk.Seal(),
                 new JsonSerializerOptions
                 {
-                    WriteIndented = false,
+                    WriteIndented = true,
                     Encoder = JavaScriptEncoder.Create(UnicodeRanges.BasicLatin, UnicodeRanges.Cyrillic),
                 });
 
@@ -53,7 +53,7 @@ namespace JBKeyKeeper
             JBKKContainerSealed jbkkFromfile = JsonSerializer.Deserialize<JBKKContainerSealed>(jbbkSerialized);
             JBKKContainer unsealed = jbkkFromfile.Unseal();
 
-            this.Shutdown();
+            //this.Shutdown();
         }
 
     }
