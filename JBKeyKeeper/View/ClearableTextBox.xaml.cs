@@ -16,13 +16,14 @@ namespace JBKeyKeeper.View
             get { return placeholder; }
             set {
                 placeholder = value;
-             //   tbPlaceholder.Text = placeholder;
-                PropertyChanged.Invoke(this, new PropertyChangedEventArgs("Placeholder"));
+                tbPlaceholder.Text = placeholder;
+             //   PropertyChanged.Invoke(this, new PropertyChangedEventArgs("Placeholder"));
             }
         }
 
         public ClearableTextBox()
         {
+            DataContext = this;
             InitializeComponent();
         }
 

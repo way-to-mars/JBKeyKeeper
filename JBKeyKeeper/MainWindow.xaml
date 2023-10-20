@@ -10,10 +10,18 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="70"/>
-            <RowDefinition/>
-            <RowDefinition Height="20"/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="20*"/>
         </Grid.RowDefinitions>
         <userControls:UserControl1/>
         <userControls:ClearableTextBox Grid.Row="1" Height="30" Placeholder="введи текст, дубина"/>
+        <TextBox Grid.Row="2" Name="txtInput" VerticalContentAlignment="Center" Width="250" Height="40"
+                 FontSize="16" Text="{Binding BoundText, UpdateSourceTrigger=PropertyChanged}"/>
+        <Button Grid.Row="3" Name="btnSet" Content="Set" Width="100" Height="40"/>
+        <TextBlock Grid.Row="4" Name="tbResult" FontSize="16" Text="{Binding BoundText}"
+                   VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
     </Grid>
 </Window>
