@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using System.Windows;
+using System.Windows.Controls;
 
 namespace JBKeyKeeper.View
 {
@@ -7,6 +8,11 @@ namespace JBKeyKeeper.View
         public UserControl1()
         {
             InitializeComponent();
+        }
+
+        private void MenuItem_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
         }
     }
 }

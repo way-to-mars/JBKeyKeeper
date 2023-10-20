@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Windows;
 
 namespace JBKeyKeeper
@@ -23,7 +24,21 @@ namespace JBKeyKeeper
         public MainWindow()
         {
             DataContext = this;
+            this.AllowsTransparency = true;
             InitializeComponent();
+        }
+
+
+        private void Window_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            Console.WriteLine("Mouse In");
+            this.Opacity = 1;
+        }
+
+        private void Window_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            Console.WriteLine("Mouse gone");
+            this.Opacity = 0.5;
         }
     }
 }

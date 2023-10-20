@@ -55,5 +55,6 @@ namespace JBKeyKeeper
             //this.Shutdown();
         }
 
+        public void CloseApp() { this.Shutdown(); }
     }
 }
