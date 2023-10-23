@@ -1,0 +1,25 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <Color x:Key="mainBorderColor1">#000000</Color>
+
+    <Color x:Key="mainBackColor1">#5C5C5C</Color>
+    <Color x:Key="mainBackColor2">#323232</Color>
+    <Color x:Key="headerBackColor">#2C2C2C</Color>
+    <Color x:Key="headerButtonColor">#373737</Color>
+    <Color x:Key="headerButtonSelected">#424242</Color>
+
+    <Color x:Key="fontColor">#FFFFFF</Color>
+    <Color x:Key="fontColor2">#989898</Color>
+
+    <Color x:Key="progressColor">#E95420</Color>
+
+    <SolidColorBrush x:Key="mainBorderBrush" Color="{StaticResource mainBorderColor1}"/>
+    <SolidColorBrush x:Key="headerBackBrush" Color="{StaticResource headerBackColor}"/>
+    <SolidColorBrush x:Key="fontBrush1" Color="{StaticResource fontColor}"/>
+    <SolidColorBrush x:Key="fontBrush2" Color="{StaticResource fontColor2}"/>
+    <SolidColorBrush x:Key="fontBrush3" Color="{StaticResource progressColor}"/>
+    <SolidColorBrush x:Key="mainBackBrush1" Color="{StaticResource mainBackColor1}"/>
+    <SolidColorBrush x:Key="mainBackBrush2" Color="{StaticResource mainBackColor2}"/>
+
+</ResourceDictionary>

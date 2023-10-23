@@ -1,11 +1,11 @@
-﻿using System;
+﻿using JBKeyKeeper.View;
+using System;
 using System.ComponentModel;
 using System.Windows;
+using System.Windows.Input;
 
 namespace JBKeyKeeper
 {
-
-
     public partial class MainWindow : Window, INotifyPropertyChanged
     {
         private string boundText;
@@ -24,8 +24,10 @@ namespace JBKeyKeeper
         public MainWindow()
         {
             DataContext = this;
-            this.AllowsTransparency = true;
+            Application.Current.MainWindow = this;  // to access MainWindow from customs
+
             InitializeComponent();
+            WindowBody.Child = UI.ReadOnlyCreator.WindowBody(App.getJBBK().Items);
         }
 
 
@@ -39,6 +41,10 @@ namespace JBKeyKeeper
         {
             Console.WriteLine("Mouse gone");
             this.Opacity = 0.5;
+        }
+        private void Window_MouseDown(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            return;
         }
     }
 }
