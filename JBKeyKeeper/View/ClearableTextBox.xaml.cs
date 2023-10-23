@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -16,8 +17,7 @@ namespace JBKeyKeeper.View
             get { return placeholder; }
             set {
                 placeholder = value;
-                tbPlaceholder.Text = placeholder;
-             //   PropertyChanged.Invoke(this, new PropertyChangedEventArgs("Placeholder"));
+                OnPropertyChanged();
             }
         }
 
@@ -26,7 +26,7 @@ namespace JBKeyKeeper.View
             DataContext = this;
             InitializeComponent();
         }
-
+         
         private void BtnClear_Click(object sender, RoutedEventArgs e)
         {
             txtInput.Clear();
@@ -39,6 +39,10 @@ namespace JBKeyKeeper.View
                 tbPlaceholder.Visibility = Visibility.Visible;
             else
                 tbPlaceholder.Visibility = Visibility.Hidden;
+        }
+
+        private void OnPropertyChanged([CallerMemberName] string propertyName = null) {
+            PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

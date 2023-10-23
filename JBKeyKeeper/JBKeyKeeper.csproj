@@ -93,6 +93,9 @@
     <Compile Include="View\CustomHeader.xaml.cs">
       <DependentUpon>CustomHeader.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\DoubleTextReadOnly.xaml.cs">
+      <DependentUpon>DoubleTextReadOnly.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\JBBKPairView.xaml.cs">
       <DependentUpon>JBBKPairView.xaml</DependentUpon>
     </Compile>
@@ -127,6 +130,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\CustomHeader.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DoubleTextReadOnly.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

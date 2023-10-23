@@ -24,7 +24,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <userControls:CustomHeader/>
+        <userControls:CustomHeader x:Name="WindowHeader"/>
         
         <Border Grid.Row="1" BorderBrush="{StaticResource mainBorderBrush}"
                 BorderThickness="1" VerticalAlignment="Center"

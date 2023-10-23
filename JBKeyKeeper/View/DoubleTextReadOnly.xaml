@@ -1,0 +1,26 @@
+﻿<UserControl x:Class="JBKeyKeeper.View.DoubleTextReadOnly"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:JBKeyKeeper.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="100" d:DesignWidth="200">
+    <Grid Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" MinHeight="25"/>
+            <RowDefinition Height="Auto" MinHeight="25"/>            
+        </Grid.RowDefinitions>
+
+        <Border BorderBrush="{StaticResource mainBorderBrush}" BorderThickness="1,1,1,0" CornerRadius="16,16,0,0" Background="#494949">
+            <TextBox Text="name" Margin="10,2,10,2" Background="Transparent" Foreground="{StaticResource fontBrush2}"
+                     BorderThickness="0" VerticalContentAlignment="Bottom"/>
+        </Border>
+        <Border Grid.Row="1" BorderBrush="{StaticResource mainBorderBrush}" BorderThickness="1,0,1,1" CornerRadius="0,0,16,16" Background="#595959">
+            <TextBox Text="some value 11111 222222222 3333333  44444 555555 66666"  Foreground="{StaticResource fontBrush1}"
+                     TextWrapping="Wrap" Margin="10,2,10,2" Background="Transparent"
+                     BorderThickness="0" VerticalContentAlignment="Top"
+                     />
+        </Border>
+    </Grid>
+</UserControl>

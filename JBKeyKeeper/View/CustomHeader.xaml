@@ -19,11 +19,11 @@
                 <TextBlock Text="Window Name" Margin="5,2,2,5" Foreground="#FFFFFF" FontWeight="SemiBold" FontSize="14"
                            TextWrapping="Wrap"/>
 
-                <Button x:Name="btnClose"                          
+                <Button x:Name="btnClose"
                             BorderThickness="0"
-                            Content="X"
+                            Content="x"
                             Foreground="White"
-                            FontSize="12"
+                            FontSize="14"
                             FontFamily="Montserrat"
                             Cursor="Hand"
                             Grid.Column="1"
@@ -31,10 +31,10 @@
 
                     <Button.Style>
                         <Style TargetType="Button">
-                            <Setter Property="Background" Value="#DA34AE"/>
+                            <Setter Property="Background" Value="{StaticResource headerButtonBrush}"/>
                             <Style.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="#C62DAE"/>
+                                    <Setter Property="Background" Value="{StaticResource headerButtonSelectedBrush}"/>
                                 </Trigger>
                             </Style.Triggers>
                         </Style>

@@ -22,4 +22,8 @@
     <SolidColorBrush x:Key="mainBackBrush1" Color="{StaticResource mainBackColor1}"/>
     <SolidColorBrush x:Key="mainBackBrush2" Color="{StaticResource mainBackColor2}"/>
 
+    <SolidColorBrush x:Key="headerButtonBrush" Color="{StaticResource headerButtonColor}"/>
+    <SolidColorBrush x:Key="headerButtonSelectedBrush" Color="{StaticResource headerButtonSelected}"/>
+    
+    
 </ResourceDictionary>
