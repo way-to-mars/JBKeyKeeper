@@ -7,12 +7,12 @@ namespace JBKeyKeeper.UI
 {
     internal class ReadOnlyCreator
     {
-        public static ScrollViewer WindowBody(IList<JBBKItem> sourceItems) {
-            ScrollViewer scrollViewer = new ScrollViewer();
-            scrollViewer.Content = StackPanel(sourceItems);
-            scrollViewer.VerticalScrollBarVisibility = ScrollBarVisibility.Auto;
-            return scrollViewer;
-        }
+        public static ScrollViewer WindowBody(IList<JBBKItem> sourceItems) =>
+            new ScrollViewer
+            {
+                Content = StackPanel(sourceItems),
+                VerticalScrollBarVisibility = ScrollBarVisibility.Auto
+            };
 
         private static StackPanel StackPanel(IList<JBBKItem> sourceItems)
         {

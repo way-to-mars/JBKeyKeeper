@@ -27,7 +27,7 @@ namespace JBKeyKeeper
 
     public static class JBKKContainerSealedExtensions
     {
-        private const bool FCFlag = true;
+        private const bool FCFlag = true;  // invariant
 
         private static JBBKPair Unseal(this JBBKPairSealed sealedPair) =>
             new JBBKPair

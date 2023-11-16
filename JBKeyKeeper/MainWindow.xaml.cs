@@ -38,14 +38,14 @@ namespace JBKeyKeeper
             Console.WriteLine("Mouse In");
             this.Opacity = 1;
 
-            this.Effect = null;
+            // this.Effect = null;
         }
 
         private void Window_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
         {
             Console.WriteLine("Mouse gone");
-            this.Opacity = 0.5;
-            this.Effect = new BlurEffect() { Radius = 2 };
+            this.Opacity = 0.75;
+            // this.Effect = new BlurEffect() { Radius = 2 };
         }
         private void Window_MouseDown(object sender, System.Windows.Input.MouseEventArgs e)
         {
