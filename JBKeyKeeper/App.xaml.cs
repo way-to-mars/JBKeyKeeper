@@ -1,20 +1,19 @@
-﻿using System.Collections.Generic;
-using System.Windows;
-using System.Text.Json;
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text.Encodings.Web;
+using System.Text.Json;
 using System.Text.Unicode;
+using System.Windows;
 
 
 namespace JBKeyKeeper
 {
     public partial class App : Application
     {
-
         private JBKKContainer _JbbkContainer;
 
-        public static JBKKContainer getJBBK() => (Application.Current as App)._JbbkContainer;
-        
+        public static JBKKContainer GetJBBK() => (Application.Current as App)._JbbkContainer;        
 
         public App() { Startup += new StartupEventHandler(OnAppStart); }
 
@@ -75,7 +74,9 @@ namespace JBKeyKeeper
                     Encoder = JavaScriptEncoder.Create(UnicodeRanges.BasicLatin, UnicodeRanges.Cyrillic),
                 });
 
-            Console.WriteLine("\n" + jbbkSerialized.ToString() + "\n");
+            Console.WriteLine(CreateContainer());
+
+            Debug.WriteLine("\n" + jbbkSerialized.ToString() + "\n");
 
             JBKKContainerSealed jbkkFromfile = JsonSerializer.Deserialize<JBKKContainerSealed>(jbbkSerialized);
             JBKKContainer unsealed = jbkkFromfile.Unseal();
@@ -86,5 +87,76 @@ namespace JBKeyKeeper
         }
 
         public void CloseApp() { this.Shutdown(); }
+
+
+        public JBKKContainer2 CreateContainer() =>
+            new JBKKContainer2
+            {
+                Items = new List<JBBKItem2>
+                {
+                    new JBBKItem2
+                    {
+                        Name = "Amerigo",
+                        Items = new List<JBBKSubItem2>
+                        {
+                            new JBBKSubItem2
+                            {
+                                Name = "First trip",
+                                Fields = new List<JBBKPair2>{
+                                    new JBBKPair2{ Name = "Date", Value = "03.05.1784"},
+                                    new JBBKPair2{ Name = "Duration", Value = "6 months"},
+                                    new JBBKPair2{ Name = "Result", Value = "Nothing"},
+                                }
+                            },
+                            new JBBKSubItem2
+                            {
+                                Name = "Second trip",
+                                Fields = new List<JBBKPair2>{
+                                    new JBBKPair2{ Name = "Date", Value = "12.06.1785"},
+                                    new JBBKPair2{ Name = "Duration", Value = "10 months"},
+                                    new JBBKPair2{ Name = "Result", Value = "Crushed"},
+                                }
+                            },
+                            new JBBKSubItem2
+                            {
+                                Name = "Third trip",
+                                Fields = new List<JBBKPair2>{
+                                    new JBBKPair2{ Name = "Date", Value = "01.03.1787"},
+                                    new JBBKPair2{ Name = "Duration", Value = "12 months"},
+                                    new JBBKPair2{ Name = "Result", Value = "Found new lands"},
+                                }
+                            }
+                        }
+                    },
+                    new JBBKItem2
+                    {
+                        Name = "Alex II",
+                        Items = new List<JBBKSubItem2>
+                        {
+                            new JBBKSubItem2
+                            {
+                                Name = "Personal",
+                                Fields = new List<JBBKPair2>{
+                                    new JBBKPair2{ Name = "Born", Value = "4 A.D"},
+                                    new JBBKPair2{ Name = "Lifetime", Value = "42 years"},
+                                    new JBBKPair2{ Name = "Children", Value = "five or more"},
+                                }
+                            },
+                            new JBBKSubItem2
+                            {
+                                Name = "Battles",
+                                Fields = new List<JBBKPair2>{
+                                    new JBBKPair2{ Name = "Phives", Value = "Won"},
+                                    new JBBKPair2{ Name = "Attrones", Value = "Won"},
+                                    new JBBKPair2{ Name = "Bortone", Value = "Won"},
+                                    new JBBKPair2{ Name = "Xenoth", Value = "Won"},
+                                    new JBBKPair2{ Name = "Barrude", Value = "Defeated"},
+                                }
+                            },
+                        }
+                    },
+
+                }
+            };
     }
 }

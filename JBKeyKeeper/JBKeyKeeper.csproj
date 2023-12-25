@@ -86,6 +86,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Json\JBKKContainter2.cs" />
     <Compile Include="UI\ReadOnlyCreator.cs" />
     <Compile Include="View\ClearableTextBox.xaml.cs">
       <DependentUpon>ClearableTextBox.xaml</DependentUpon>

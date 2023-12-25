@@ -1,27 +1,14 @@
-﻿using JBKeyKeeper.View;
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.Windows;
-using System.Windows.Input;
-using System.Windows.Media.Effects;
 
 namespace JBKeyKeeper
 {
     public partial class MainWindow : Window, INotifyPropertyChanged
     {
-        private string boundText;
         public enum StateEnum { SHOW, CREATE, EDIT, HISTORY }
         
         public event PropertyChangedEventHandler PropertyChanged;
-
-        public string BoundText
-        {
-            get { return boundText; }
-            set {
-                boundText = value;
-                PropertyChanged.Invoke(this, new PropertyChangedEventArgs("BoundText"));
-            }
-        }
 
         public MainWindow()
         {
@@ -29,7 +16,7 @@ namespace JBKeyKeeper
             Application.Current.MainWindow = this;  // to access MainWindow from customs
 
             InitializeComponent();
-            WindowBody.Child = UI.ReadOnlyCreator.WindowBody(App.getJBBK().Items);
+            WindowBody.Child = UI.ReadOnlyCreator.WindowBody(App.GetJBBK().Items);
         }
 
 

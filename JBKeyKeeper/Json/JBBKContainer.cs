@@ -1,6 +1,4 @@
-﻿using JBKeyKeeper.Json;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
@@ -44,9 +42,7 @@ namespace JBKeyKeeper
     public class JBBKPair
     {
         public string Name { get; set; }
-        public string Value { get; set; }
-
-        
+        public string Value { get; set; }        
     }
 
     public static class JBKKContainerExtensions
