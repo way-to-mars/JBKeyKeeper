@@ -1,22 +1,48 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace JBKeyKeeper
 {
     public static class StringExtensions
     {
-        private const int key = 17 * 31;
-        public static string FormatSealed(this string inputString, bool undo = false)
+        private static readonly List<KeyValuePair<String, String>> ReplaceDict = [
+            new KeyValuePair<string, string>("04", "G"),
+            new KeyValuePair<string, string>("44", "H"),
+            new KeyValuePair<string, string>("00", "I"),
+            new KeyValuePair<string, string>("II", "J"),
+            new KeyValuePair<string, string>("01", "K"),
+            new KeyValuePair<string, string>("02", "L"),
+            new KeyValuePair<string, string>("03", "M"),
+            new KeyValuePair<string, string>("04", "N"),
+            new KeyValuePair<string, string>("05", "O"),
+            new KeyValuePair<string, string>("06", "P"),
+            new KeyValuePair<string, string>("07", "Q"),
+            new KeyValuePair<string, string>("08", "R"),
+            new KeyValuePair<string, string>("09", "S"),
+            new KeyValuePair<string, string>("0A", "T"),
+            new KeyValuePair<string, string>("0B", "U"),
+            new KeyValuePair<string, string>("0C", "V"),
+            new KeyValuePair<string, string>("0D", "W"),
+            new KeyValuePair<string, string>("0E", "X"),
+            new KeyValuePair<string, string>("0F", "Y"),
+            new KeyValuePair<string, string>("66", "Z"),
+        ];
+        private static readonly IEnumerable<KeyValuePair<String, String>> InvertedReplaceDict = ReplaceDict.AsEnumerable().Reverse();
+        private static int RandomSeed(int length, int index) => 31 * index - length * 17;
+        public static string FormatSealed(this string inputString, bool undo, int index = 0)
         {
+            int key;
             if (undo)
             {
                 string knownLengthString = inputString.UnRenameHex();
-                int unkey = key * (knownLengthString.Length / 4);
-                return knownLengthString.DeShuffle(unkey).FromUTFCodeString();
+                key = RandomSeed(knownLengthString.Length / 4, index);
+                return knownLengthString.DeShuffle(key).FromUTFCodeString();
             }
 
-            return inputString.ToUTFCodeString().Shuffle(key * inputString.Length).RenameHex();
+            key = RandomSeed(inputString.Length, index);
+            return inputString.ToUTFCodeString().Shuffle(key).RenameHex();
         }
 
         private static int[] GetShuffleExchanges(int size, int key)
@@ -63,7 +89,7 @@ namespace JBKeyKeeper
 
         private static string ToUTFCodeString(this string str)
         {
-            List<string> output = new List<string>();
+            List<string> output = [];
             for (var i = 0; i < str.Length; i++)
                 output.Add(string.Format("{0:X4}", (ushort)str[i]));
             return string.Concat(output);
@@ -71,7 +97,7 @@ namespace JBKeyKeeper
 
         private static string FromUTFCodeString(this string str)
         {
-            List<char> output = new List<char>();
+            List<char> output = [];
             for (var i = 0; i < str.Length; i += 4)
                 output.Add((char)Convert.ToUInt16(str.Substring(i, 4), 16));
             return string.Concat(output);
@@ -79,12 +105,16 @@ namespace JBKeyKeeper
 
         private static string RenameHex(this string hexString)
         {
-            return hexString.Replace("04", "Q").Replace("44", "W").Replace("000", "X").Replace("00", "Y").Replace("0", "Z");
+            StringBuilder sb = new(hexString);
+            foreach (var pair in ReplaceDict) sb.Replace(pair.Key, pair.Value);
+            return sb.ToString();
         }
 
         private static string UnRenameHex(this string hexString)
         {
-            return hexString.Replace("Z", "0").Replace("Y", "00").Replace("X", "000").Replace("W", "44").Replace("Q", "04");
+            StringBuilder sb = new(hexString);
+            foreach (var pair in InvertedReplaceDict) sb.Replace(pair.Value, pair.Key);
+            return sb.ToString();
         }
     }
 }

@@ -31,7 +31,7 @@ namespace JBKeyKeeper
         public IList<JBBKPair> Fields { get; set; }            
         public override string ToString() {
             StringBuilder sb = new StringBuilder();
-            sb.Append($"  {{\n    Name: {Name}\n    Fields: [\n");
+            sb.Append($"  {{\n    Name: {Name}\n    Pairs: [\n");
             foreach (JBBKPair pair in Fields)
                 sb.Append($"      {{\n        Name: {pair.Name}\n        Value: {pair.Value}\n      }}\n");
             sb.Append("    ]\n  }}\n");

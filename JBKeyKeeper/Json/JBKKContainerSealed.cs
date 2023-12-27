@@ -6,7 +6,7 @@ namespace JBKeyKeeper
 {
     public class JBKKContainerSealed
     {
-        public string Format { get => JBKKDefs.FormatTAG.FormatSealed(); set { } }
+        public string Format { get => JBKKDefs.FormatTAG.FormatSealed(false); set { } }
         public JbbkType Type { get => JbbkType.SEALED; set { } }
         public string Name { get; set; }
         public IList<JBBKItemSealed> Items { get; set; }
