@@ -16,7 +16,7 @@ namespace JBKeyKeeper
             Application.Current.MainWindow = this;  // to access MainWindow from customs
 
             InitializeComponent();
-            WindowBody.Child = UI.ReadOnlyCreator.WindowBody(App.GetJBBK().Items);
+          //  WindowBody.Child = UI.ReadOnlyCreator.WindowBody(App.GetJBKK().Items);
         }
 
 

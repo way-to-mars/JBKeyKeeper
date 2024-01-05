@@ -9,18 +9,24 @@
     <Grid Background="Transparent">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" MinHeight="25"/>
-            <RowDefinition Height="Auto" MinHeight="25"/>            
+            <RowDefinition Height="Auto" MinHeight="25"/>
         </Grid.RowDefinitions>
 
-        <Border BorderBrush="{StaticResource mainBorderBrush}" BorderThickness="1,1,1,0" CornerRadius="16,16,0,0" Background="#494949">
-            <TextBox Text="name" Margin="10,2,10,2" Background="Transparent" Foreground="{StaticResource fontBrush2}"
-                     BorderThickness="0" VerticalContentAlignment="Bottom"/>
+        <Border BorderBrush="{StaticResource whiteTransparent40}" BorderThickness="2,1,1,0" CornerRadius="0,8,0,0" Background="{StaticResource blackTransparent40}">
+            <TextBox x:Name="PairName" d:Text="Name" Text="Default Name" Margin="10,2,10,4" Background="Transparent" Foreground="{StaticResource fontBrush3}"
+                    TextWrapping="Wrap" 
+                    BorderThickness="0" VerticalContentAlignment="Center"
+                    IsReadOnly="True"/>
         </Border>
-        <Border Grid.Row="1" BorderBrush="{StaticResource mainBorderBrush}" BorderThickness="1,0,1,1" CornerRadius="0,0,16,16" Background="#595959">
-            <TextBox Text="some value 11111 222222222 3333333  44444 555555 66666"  Foreground="{StaticResource fontBrush1}"
-                     TextWrapping="Wrap" Margin="10,2,10,2" Background="Transparent"
-                     BorderThickness="0" VerticalContentAlignment="Top"
-                     />
+
+        <Border Grid.Row="1" BorderBrush="{StaticResource whiteTransparent40}" BorderThickness="2,0,1,1" CornerRadius="0,0,0,8" Background="{StaticResource whiteTransparent20}">
+            <TextBox x:Name="PairValue" d:Text="Value" Text="Default Value" Foreground="{StaticResource fontBrush4}"
+                    TextWrapping="Wrap"  Background="Transparent"
+                    BorderThickness="0" VerticalContentAlignment="Center"
+                    Margin="10,4,10,2"
+                    IsReadOnly="True"
+                    />
         </Border>
+
     </Grid>
 </UserControl>

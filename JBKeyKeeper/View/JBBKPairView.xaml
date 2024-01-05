@@ -7,9 +7,9 @@
              mc:Ignorable="d" 
              d:DesignHeight="100" d:DesignWidth="300" MouseMove="UserControl_MouseMove">
     <StackPanel>
-        <TextBlock x:Name="ValueName" Foreground = "{StaticResource fontBrush1}"
+        <TextBlock x:Name="ValueName" Foreground = "{StaticResource fontBrush1}" Text="123"
                    TextWrapping="WrapWithOverflow" MaxWidth="300" MaxHeight="100"/>
-        <TextBlock x:Name="Value" Foreground = "{StaticResource fontBrush2}"
+        <TextBlock x:Name="Value" Foreground = "{StaticResource fontBrush2}" Text="321"
                    TextWrapping="Wrap"  MaxWidth="300" MaxHeight="99"/>
     </StackPanel>
 </UserControl>

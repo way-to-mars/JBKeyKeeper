@@ -1,0 +1,41 @@
+﻿<Window x:Class="JBKeyKeeper.View.WindowTemplate"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:JBKeyKeeper.View"
+        xmlns:userControls="clr-namespace:JBKeyKeeper.View"
+        mc:Ignorable="d"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Height="auto" Width="auto"
+        MaxHeight="800" MaxWidth="500"
+        ShowInTaskbar="False"
+        Icon="/ic_key_32.ico"
+        SizeToContent="WidthAndHeight"
+        Topmost="True"
+        Background="Transparent"
+        >
+    <Grid Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <userControls:CustomHeader x:Name="WindowHeader"/>
+
+        <Border Grid.Row="1" BorderBrush="{StaticResource mainBorderBrush}"
+                BorderThickness="1" VerticalAlignment="Center"
+                CornerRadius="0,0,8,8" Background="{StaticResource mainBackBrush1}"
+                Height="auto" Padding="8">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel x:Name="WindowBody">
+                </StackPanel>
+            </ScrollViewer>
+        </Border>
+    </Grid>
+</Window>
+
+
+
+

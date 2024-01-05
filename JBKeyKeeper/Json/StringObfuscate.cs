@@ -33,6 +33,9 @@ namespace JBKeyKeeper
         private static int RandomSeed(int length, int index) => 31 * index - length * 17;
         public static string FormatSealed(this string inputString, bool undo, int index = 0)
         {
+            if (inputString.Length == 0 && !undo) return "%%";
+            if (undo && inputString == "%%") return "";
+
             int key;
             if (undo)
             {

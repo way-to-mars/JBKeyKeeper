@@ -9,21 +9,60 @@
     <Color x:Key="headerButtonColor">#373737</Color>
     <Color x:Key="headerButtonSelected">#424242</Color>
 
-    <Color x:Key="fontColor">#FFFFFF</Color>
-    <Color x:Key="fontColor2">#989898</Color>
+    <Color x:Key="fontColor1">#E95420</Color>
+    <Color x:Key="fontColor2">#DDDDFF</Color>
+    <Color x:Key="fontColor3">#AAAACF</Color>
+    <Color x:Key="fontColor4">#EEEEEE</Color>
 
-    <Color x:Key="progressColor">#E95420</Color>
+    <Color x:Key="whiteColor10">#10FFFFFF</Color>
+    <Color x:Key="whiteColor20">#20FFFFFF</Color>
+    <Color x:Key="whiteColor30">#30FFFFFF</Color>
+    <Color x:Key="whiteColor40">#40FFFFFF</Color>
+    <Color x:Key="whiteColor50">#50FFFFFF</Color>
+    <Color x:Key="blackColor10">#10000000</Color>
+    <Color x:Key="blackColor20">#20000000</Color>
+    <Color x:Key="blackColor30">#30000000</Color>
+    <Color x:Key="blackColor40">#40000000</Color>
+    <Color x:Key="blackColor50">#50000000</Color>
+
 
     <SolidColorBrush x:Key="mainBorderBrush" Color="{StaticResource mainBorderColor1}"/>
     <SolidColorBrush x:Key="headerBackBrush" Color="{StaticResource headerBackColor}"/>
-    <SolidColorBrush x:Key="fontBrush1" Color="{StaticResource fontColor}"/>
+    <SolidColorBrush x:Key="fontBrush1" Color="{StaticResource fontColor1}"/>
     <SolidColorBrush x:Key="fontBrush2" Color="{StaticResource fontColor2}"/>
-    <SolidColorBrush x:Key="fontBrush3" Color="{StaticResource progressColor}"/>
+    <SolidColorBrush x:Key="fontBrush3" Color="{StaticResource fontColor3}"/>
+    <SolidColorBrush x:Key="fontBrush4" Color="{StaticResource fontColor4}"/>
     <SolidColorBrush x:Key="mainBackBrush1" Color="{StaticResource mainBackColor1}"/>
     <SolidColorBrush x:Key="mainBackBrush2" Color="{StaticResource mainBackColor2}"/>
 
     <SolidColorBrush x:Key="headerButtonBrush" Color="{StaticResource headerButtonColor}"/>
     <SolidColorBrush x:Key="headerButtonSelectedBrush" Color="{StaticResource headerButtonSelected}"/>
-    
-    
+
+
+    <SolidColorBrush x:Key="whiteTransparent10" Color="{StaticResource whiteColor10}"/>
+    <SolidColorBrush x:Key="whiteTransparent20" Color="{StaticResource whiteColor20}"/>
+    <SolidColorBrush x:Key="whiteTransparent30" Color="{StaticResource whiteColor30}"/>
+    <SolidColorBrush x:Key="whiteTransparent40" Color="{StaticResource whiteColor40}"/>
+    <SolidColorBrush x:Key="whiteTransparent50" Color="{StaticResource whiteColor50}"/>
+    <SolidColorBrush x:Key="blackTransparent10" Color="{StaticResource blackColor10}"/>
+    <SolidColorBrush x:Key="blackTransparent20" Color="{StaticResource blackColor20}"/>
+    <SolidColorBrush x:Key="blackTransparent30" Color="{StaticResource blackColor30}"/>
+    <SolidColorBrush x:Key="blackTransparent40" Color="{StaticResource blackColor40}"/>
+    <SolidColorBrush x:Key="blackTransparent50" Color="{StaticResource blackColor50}"/>
+
+    <DrawingBrush x:Key="DashBrush" Viewport="0,0,8,8" ViewportUnits="Absolute" TileMode="Tile">
+        <DrawingBrush.Drawing>
+            <DrawingGroup>
+                <GeometryDrawing Brush="{StaticResource whiteTransparent30}">
+                    <GeometryDrawing.Geometry>
+                        <GeometryGroup>
+                            <RectangleGeometry Rect="20,20,50,50" />
+                            <RectangleGeometry Rect="50,50,50,50" />
+                        </GeometryGroup>
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+            </DrawingGroup>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
 </ResourceDictionary>

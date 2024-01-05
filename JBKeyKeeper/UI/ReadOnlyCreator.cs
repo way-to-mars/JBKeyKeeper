@@ -20,7 +20,7 @@ namespace JBKeyKeeper.UI
 
             foreach (JBBKItem sourceItem in sourceItems)
             {
-                var itemView = ItemView(sourceItem);
+                JBBKItemView itemView = ItemView(sourceItem);
                 result.Children.Add(itemView);
             }
 
